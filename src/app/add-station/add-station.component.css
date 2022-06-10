@@ -1,0 +1,18 @@
+station-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  
+}
+.form-container{
+    margin-top: 20px;
+    background-color: beige;
+    border-radius: 6px;
+    width: 40vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}

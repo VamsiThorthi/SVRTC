@@ -1,0 +1,12 @@
+
+<form [formGroup]="fromToForm" (submit)="searchbuses()">
+    <label for="fromPlace">From</label>
+    <input type="text" id="fromPlace" formControlName="fromLocation">
+    <br>
+    <br>
+    <label for="toPlace">To</label>
+    <input type="text" id="toPlace" formControlName="toLocation">
+    <br>
+    <br>
+    <button class="btn btn-secondary" type="Submit">Search</button>
+</form>

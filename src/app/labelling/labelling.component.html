@@ -1,0 +1,33 @@
+<div  class="bg-container">
+    <div *ngFor="let p of output"  class="card-container">
+        <div class="card-alignment">
+            {{dateTimefunc(p.arrivalDateTime,p.departureDateTime)}}
+            <div>
+                <p>{{p.busNo}}</p>
+                <p>Garuda Plus({{p.seatType}})</p>
+            </div>
+            <div>
+                <p>{{ p.arrivalDateTime | date:"HH:mm" }}</p>
+                <p>{{p.busStations[0].stationName}}</p>
+            </div>
+           
+            <div class="arrow-container">
+                
+                <p>{{timedifference}}</p>
+                <mat-icon class="s">arrow_right_alt</mat-icon>
+            </div>
+            <div>
+                <p>{{ p.departureDateTime | date:"HH:mm" }}</p>
+                <p *ngIf="days>=1">{{ p.departureDateTime | date:"dd-MMM" }}</p>
+                <p>{{p.busStations[1].stationName}}</p>
+                <!-- update later regarding last station -->
+            </div>
+            <div>
+                <p class="rating">4.3</p>
+                <br>
+                <br>
+                <button class="next_styling">next</button>
+            </div>
+        </div>
+    </div> 
+</div>

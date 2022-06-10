@@ -1,0 +1,67 @@
+<div>
+  <form class="form-control busStages" [formGroup]="busStageForm" (ngSubmit)="addBusStages()">
+    <div>
+      <label for="busNo">Bus No</label>
+    <br>
+    <input type="text" id="busNo" name="busNo" formControlName="busNo">
+    </div>
+    <div>
+      <label for="stages">Total Stages</label>
+    <br>
+    <input type="number" id="stages" name="stages" formControlName="stages" min="1" max="10">
+    </div>
+    <button [disabled]="busStageForm.invalid" type="submit">submit</button>
+    
+  </form>
+  
+  <div class="error_container" *ngIf="successValue=='error'">
+    <p class="error_para" style="color: red; font-size:24px;">{{errorValue}}</p>
+  </div>
+  <div *ngIf="successValue=='success'">
+    <form  class="form-control form_row" [formGroup]="addStationFrom" *ngFor="let each of busArray let i=index">
+    <div>
+      <!-- <label for="stationName">Station Name</label>
+      <br>
+      <input type="text" id="stationName" name="stationName" formControlName="stationName"> -->
+      <label for="{{'stationName' + each.stationId}}">Station Name</label>
+      <br>
+      <select formControlName="stationName" id="{{'stationName' + each.stationId}}" (change)="findStationDistrict($event)">
+        <option value="Choose station name" selected>Choose Station Name</option>
+        <option *ngFor="let station of stationNames">{{station.stationName}}</option>
+      </select>
+      <br>
+      <br>
+
+    </div>
+    <div>
+    <!-- <label for="stationDistrict">Station District</label>
+      <br>
+      <input type="text" id="stationDistrict" name="stationDistrict" formControlName="stationDistrict"> -->
+      <label for="{{'stationDistrict' + each.stationId}}">station District</label>
+        <br>
+        <select formControlName="stationDistrict" id="{{'stationDistrict' + each.stationId}}">
+          <option value="Choose District" selected>Choose District</option>
+          <option *ngFor="let station of stationDistricts">{{station.stationDistrict}}</option>
+        </select>
+
+    </div>
+    <!-- <div> -->
+    <!-- <label for="arrivalDateTime">Arrival DateTime</label>
+      <br>
+      <input type="datetime-local" id="arrivalDateTime" name="arrivalDateTime" formControlName="arrivalDateTime">
+    </div>
+    <div>
+      <label for="departureDateTime">Departure DateTime</label>
+      <br>
+      <input type="datetime-local" id="departureDateTime" name="departureDateTime" formControlName="departureDateTime">
+    </div> -->
+    <div>
+      <mat-slide-toggle
+    [checked]="addStationFrom.disabled"
+    (change)="addStationFrom.disabled ? addStationFrom.enable() : addStationFrom.disable()">
+    Save?
+  </mat-slide-toggle>
+    </div>
+  </form>
+</div>
+</div>

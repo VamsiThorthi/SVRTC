@@ -1,0 +1,56 @@
+<div class="bus-container" >
+  <div class="form-container">
+    <form [formGroup]="busForm" (ngSubmit)="onSubmit()">
+
+      <br>
+      <br>
+      <label for="busNo">Bus No</label>
+      <br>
+      <input type="text" placeholder="bus vechile no" id="busNo" formControlName="busNo">
+      <br>
+      <span style="color: red; font-size:10px;" *ngIf="busNo && busNo.invalid && busNo.touched">please eneter valid bus no</span>
+      <br>
+      
+      <label for="busType">Bus Type</label>
+      <br>
+      <input type="radio" name="busType" id="busType" formControlName="busType" value="Public"> Public
+      <input type="radio" name="busType" id="busType" formControlName="busType" value="Private"> Private
+      <br>
+      <span style="color: red; font-size:10px;" *ngIf="busType && busType.invalid && busType.touched">please select bus type</span>
+      <br>
+     
+      <label for="seatType">Seat Type</label>
+      <br>
+      <input type="radio" name="seatType" id="seatType" formControlName="seatType" value="Chair"> Chair
+      <input type="radio" name="seatType" id="seatType" formControlName="seatType" value="Sleeper"> Sleeper
+      <br>
+      <span style="color: red; font-size:10px;" *ngIf="seatType && seatType.invalid && seatType.touched">please select seat type</span>
+      <br>
+      
+      <label for="arrivalDateTime">Arrival Date Time</label>
+      <br>
+      <input type="datetime-local" id="arrivalDateTime" formControlName="arrivalDateTime">
+      <br>
+      <br>
+      <label for="departureDateTime">Departure Date Time</label>
+      <br>
+      <input type="datetime-local" id="departureDateTime" formControlName="departureDateTime">
+      <br>
+      <br>
+      
+      <button [disabled]="busForm.invalid" type="submit" class="btn btn-secondary">submit</button>
+      <br>
+      <br>
+      <div *ngIf="data; else elseBlockShow" style="color: green; font-size:12px;">
+        "Bus registered succesfully"
+      </div>
+      <ng-template #elseBlockShow>
+        <p style="color: red; font-size:12px;">{{errorMsg}}</p>
+        
+      </ng-template>
+    </form>
+
+    </div>
+    <br>
+   
+  </div>

@@ -1,0 +1,11 @@
+.spacer{
+    flex: 1 1 auto;
+}
+.imgSize{
+    height: 50px;
+    width: 80px;
+    margin: 10px;
+}
+.pad{
+    margin-right: 1rem;
+}

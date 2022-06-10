@@ -1,0 +1,20 @@
+.busStages {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form_row {
+    display: flex;
+    justify-content: space-evenly;
+}
+.error_container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+error_para{
+
+}
