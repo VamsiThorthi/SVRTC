@@ -1,18 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { async } from 'rxjs';
 import { BusService } from '../bus.service';
 import { Station } from '../station';
 import { StationService } from '../station.service';
 
 @Component({
-  selector: 'app-fromto',
-  templateUrl: './fromto.component.html',
-  styleUrls: ['./fromto.component.css']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
-export class FromtoComponent implements OnInit {
+export class HomeComponent implements OnInit {
   fromId :number=0;
   toId  :number=0;
   allBuses= [];

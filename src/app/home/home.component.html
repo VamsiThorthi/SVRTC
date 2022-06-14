@@ -1,0 +1,18 @@
+<app-navbar></app-navbar>
+<div class=" d-flex flex-column align-items-end bg-container">
+    <div class="form-container">
+
+        <form [formGroup]="fromToForm" (submit)="searchbuses()">
+            <!-- <label for="fromPlace" class="form__label">From</label> -->
+            <input class="input-bar form__group" type="text" placeholder="From" id="fromPlace" formControlName="fromLocation">
+            <br>
+            <br>
+            <!-- <label for="toPlace">To</label> -->
+            <input class="input-bar" type="text" id="toPlace" placeholder="To" formControlName="toLocation">
+            <br>
+            <br>
+            <button class="btn btn-secondary" type="Submit">Search</button>
+        </form>
+    </div>
+
+</div>

@@ -4,11 +4,20 @@
 }
 
 .card-container{
-    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
     border-radius: 8px;
     border-color: rgb(160, 160, 190) ;
     border-style: groove;
-    height: 25vh;
+    min-height: 26.7vh;
+    background-image: linear-gradient(rgb(241, 197, 197),rgb(252, 247, 247));
+    background-image: cover;
+    flex-wrap:wrap;
+    
 }
 
 .card-alignment{
@@ -16,6 +25,7 @@
     justify-content: space-between;
     margin-top: 20px;
     margin-left: 20px;
+    margin-right: 20px;  
 }
 
 .next_styling{
@@ -25,5 +35,43 @@
     border-top-left-radius: 10px;
     border-bottom-right-radius: 5px;
     border: transparent;
-    background-color: rgb(233, 58, 58);
+    background-color: #e93a3a;
+}
+.arrow-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.location-img{
+    height: 20px;
+    width: 20px;
+
+    color: brown;
+}
+.location-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  
+
+}
+
+.icon-loc{
+    color: rgb(221, 19, 5) ;
+    margin: 5px;
+
+}
+.rating-cont{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 7px;
+}
+.button-cont {
+    display: flex;
+    justify-content: flex-end;
+     
 }

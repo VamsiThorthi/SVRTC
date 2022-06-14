@@ -1,33 +1,50 @@
-<div  class="bg-container">
+<div  class="bg-container body">
+    <button (click)="onBack()" style="height: 30px; border-style: none; margin-left: 20px; margin-bottom: 5px; margin-top: 10px; border-radius: 6px; background-image: linear-gradient(rgb(241, 197, 197),rgb(252, 247, 247));">
+        <mat-icon >subdirectory_arrow_left</mat-icon>
+    </button>
+    
     <div *ngFor="let p of output"  class="card-container">
         <div class="card-alignment">
             {{dateTimefunc(p.arrivalDateTime,p.departureDateTime)}}
             <div>
-                <p>{{p.busNo}}</p>
-                <p>Garuda Plus({{p.seatType}})</p>
+                <div  style="height: 25px; margin-bottom: 10px; text-align: center; background-color: yellow; border-radius: 5px; border: black; border-width: 2px; border-style: solid;">
+                    <p style="font-weight: bold;">{{p.busNo}}</p>
+                </div>
+               
+                <div>
+                    <p>Garuda Plus({{p.seatType}})</p>
+                </div>
             </div>
             <div>
-                <p>{{ p.arrivalDateTime | date:"HH:mm" }}</p>
-                <p>{{p.busStations[0].stationName}}</p>
+                <p style="font-weight: bold; font-size: 18px;">{{ p.arrivalDateTime | date:"HH:mm" }}</p>
+                
+                   
+                    <p class="d-flex align-items-center" > <mat-icon style="color: red;">room</mat-icon>{{p.busStations[0].stationName}} </p>
+                
+                
+                 
             </div>
            
             <div class="arrow-container">
-                
-                <p>{{timedifference}}</p>
-                <mat-icon class="s">arrow_right_alt</mat-icon>
+                <p class="time-diff" class="rating d-flex align-items-center"><mat-icon style="color: red;margin-right: 5px;">query_builder</mat-icon>{{timedifference}}</p>
+                <mat-icon style="transform:scale(1.25)">arrow_right_alt</mat-icon>
             </div>
             <div>
-                <p>{{ p.departureDateTime | date:"HH:mm" }}</p>
+                <p style="font-weight: bold; font-size: 18px;">{{ p.departureDateTime | date:"HH:mm" }}</p>
                 <p *ngIf="days>=1">{{ p.departureDateTime | date:"dd-MMM" }}</p>
-                <p>{{p.busStations[1].stationName}}</p>
+                <p class="d-flex align-items-center "><mat-icon style="color: red;">room</mat-icon>{{p.busStations[1].stationName}}</p>
                 <!-- update later regarding last station -->
             </div>
-            <div>
-                <p class="rating">4.3</p>
-                <br>
-                <br>
-                <button class="next_styling">next</button>
+            <div>  
+                <p class="rating d-flex align-items-center"> <mat-icon style="color: red;margin-right: 5px;">stars</mat-icon> 4.3</p>
             </div>
+            
+        </div>
+        <div class="button-cont">
+          
+                <button  class="next_styling">next</button>
+          
+            
         </div>
     </div> 
 </div>

@@ -16,6 +16,9 @@ export class BusStationComponent implements OnInit {
   errorValue: String='';
   successValue:String='';
   busArray=<any>[];
+  listOfLists=<any>[];
+ 
+  busStationArray=<any>[];
   stationDistricts!:any;
   stationList: Array<Station> = [];
   stationNames: any;
@@ -24,6 +27,7 @@ export class BusStationComponent implements OnInit {
 
   ngOnInit(): void {  
     this.stationService.getStationDetails().subscribe((data)=>{
+      
       console.log(data)
       this.stationNames = data
     })
@@ -42,7 +46,6 @@ export class BusStationComponent implements OnInit {
         console.log(data);
         this.successValue="success";
         for (let index = 0; index < this.stages?.value; index++) {
-          // const element = array[index];
           this.busArray.push(index);
         }
       },
@@ -56,10 +59,15 @@ export class BusStationComponent implements OnInit {
     
   }
 
-  findStationDistrict(event:any){
+  findStationDistrict(event:any,index:number){
+    console.log(event.target.value)
     this.stationService.getStationByName(event.target.value).subscribe(
+      
       (data)=>{
+        console.log(data)
        this.stationDistricts = data
+     this.listOfLists[index]=data;
+       console.log(this.listOfLists)
      }
     )
     console.log(this.stationList);
@@ -68,13 +76,18 @@ export class BusStationComponent implements OnInit {
   addStationFrom=new FormGroup({
     stationName:new FormControl('',[Validators.required]),
     stationDistrict:new FormControl('',[Validators.required])
-    // arrivalDateTime:new FormControl('',[Validators.required]),
-    // departureDateTime:new FormControl('',[Validators.required]) 
+   
   })
 
-  onSaveStation(){
+  setStations(i:number){
+
+  
+
+    this.busStationArray[i]=this.addStationFrom.value;
+    console.log(this.busStationArray)
+  }
+  saveStationDistricts(){
     console.log(this.addStationFrom.value)
-    //JSON.parse(JSON.stringify(this.addStationFrom.value))
     this.busService.setStationToBus(this.addStationFrom.value,this.busNo?.value).subscribe(
       (data:any)=>{
         console.log(data);
@@ -85,8 +98,36 @@ export class BusStationComponent implements OnInit {
     )
   }
 
+  onSaveStation(){
+    console.log(this.addStationFrom.value,"abcedefdfdsf")
+    this.busStationArray.push(this.addStationFrom.value)    
+  }
 
 
+  saveBusstations(){
+    this.busStationArray.forEach((element:any) => {
+      this.stationService.getStationByNameAndDistrict(element.stationName,element.stationDistrict).subscribe((data)=>{
+        
+        this.busService.setStationToBus(data,this.busNo?.value).subscribe((data1)=>{
+          console.log(data1,"setting")
+        },(error)=>{
+          console.log(error)
+        }
+        )
+
+
+
+      },(error)=>{
+        console.log("arrrrrr")
+        console.log(error)
+      })
+    });
+
+
+
+
+    console.log(this.busStationArray)
+  }
 
   get busNo(){
     return this.busStageForm.get("busNo");

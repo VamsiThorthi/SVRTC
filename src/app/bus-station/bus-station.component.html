@@ -18,50 +18,56 @@
     <p class="error_para" style="color: red; font-size:24px;">{{errorValue}}</p>
   </div>
   <div *ngIf="successValue=='success'">
-    <form  class="form-control form_row" [formGroup]="addStationFrom" *ngFor="let each of busArray let i=index">
-    <div>
-      <!-- <label for="stationName">Station Name</label>
+    <form  class="form-control form_row"  [formGroup]="addStationFrom"  (ngSubmit)="setStations(i)" *ngFor="let each of busArray let i=index">
+
+  <div>
+    <label for="stationName">Station Name</label>
+    <br>
+    <select formControlName="stationName" id="stationName"  (change)="findStationDistrict($event,i)">
+      <option value="Choose station name" selected>Choose Station Name</option>
+      <option *ngFor="let station of stationNames" value="{{station.stationName}}">{{station.stationName}}</option>
+    </select>
+    <br>
+    <br>
+
+   
+  </div>
+  <div>
+    
       <br>
-      <input type="text" id="stationName" name="stationName" formControlName="stationName"> -->
-      <label for="{{'stationName' + each.stationId}}">Station Name</label>
-      <br>
-      <select formControlName="stationName" id="{{'stationName' + each.stationId}}" (change)="findStationDistrict($event)">
-        <option value="Choose station name" selected>Choose Station Name</option>
-        <option *ngFor="let station of stationNames">{{station.stationName}}</option>
+      <select formControlName="stationDistrict" id="{{'stationDistrict' + each.stationId}}">
+        <option value="Choose District" selected>Choose District</option>
+        
+        <option *ngFor="let station of listOfLists[i] ">{{station}}</option>
+        
+        
+          
+        
+        
       </select>
-      <br>
-      <br>
 
-    </div>
-    <div>
-    <!-- <label for="stationDistrict">Station District</label>
-      <br>
-      <input type="text" id="stationDistrict" name="stationDistrict" formControlName="stationDistrict"> -->
-      <label for="{{'stationDistrict' + each.stationId}}">station District</label>
-        <br>
-        <select formControlName="stationDistrict" id="{{'stationDistrict' + each.stationId}}">
-          <option value="Choose District" selected>Choose District</option>
-          <option *ngFor="let station of stationDistricts">{{station.stationDistrict}}</option>
-        </select>
+  </div>
+  <!-- <div> -->
+  <!-- <label for="arrivalDateTime">Arrival DateTime</label>
+    <br>
+    <input type="datetime-local" id="arrivalDateTime" name="arrivalDateTime" formControlName="arrivalDateTime">
+  </div>
+  <div>
+    <label for="departureDateTime">Departure DateTime</label>
+    <br>
+    <input type="datetime-local" id="departureDateTime" name="departureDateTime" formControlName="departureDateTime">
+  </div> -->
+  <div>
+  
+  </div>
+  <button type="submit" >
+    submit
+   </button>
+ 
 
-    </div>
-    <!-- <div> -->
-    <!-- <label for="arrivalDateTime">Arrival DateTime</label>
-      <br>
-      <input type="datetime-local" id="arrivalDateTime" name="arrivalDateTime" formControlName="arrivalDateTime">
-    </div>
-    <div>
-      <label for="departureDateTime">Departure DateTime</label>
-      <br>
-      <input type="datetime-local" id="departureDateTime" name="departureDateTime" formControlName="departureDateTime">
-    </div> -->
-    <div>
-      <mat-slide-toggle
-    [checked]="addStationFrom.disabled"
-    (change)="addStationFrom.disabled ? addStationFrom.enable() : addStationFrom.disable()">
-    Save?
-  </mat-slide-toggle>
-    </div>
   </form>
+  <button type="submit" (click)="saveBusstations()" >
+    submit123
+   </button>
 </div>
 </div>

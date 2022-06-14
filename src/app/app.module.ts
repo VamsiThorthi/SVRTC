@@ -19,6 +19,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatMenuModule} from '@angular/material/menu';
 import { FromtoComponent } from './fromto/fromto.component';
 import { LabellingComponent } from './labelling/labelling.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { HomeComponent } from './home/home.component';
+
+
 
 
 @NgModule({
@@ -30,7 +34,9 @@ import { LabellingComponent } from './labelling/labelling.component';
     BusStationComponent,
     AllListComponent,
     FromtoComponent,
-    LabellingComponent
+    LabellingComponent,
+    LoginPageComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +48,8 @@ import { LabellingComponent } from './labelling/labelling.component';
     MatAutocompleteModule,
     MatSlideToggleModule,
     MatFormFieldModule,
-    MatMenuModule
+    MatMenuModule,
+   
   ],
   providers: [],
   bootstrap: [AppComponent]
