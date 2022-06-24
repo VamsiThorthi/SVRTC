@@ -4,11 +4,11 @@
 
         <form [formGroup]="fromToForm" (submit)="searchbuses()">
             <!-- <label for="fromPlace" class="form__label">From</label> -->
-            <input class="input-bar form__group" type="text" placeholder="From" id="fromPlace" formControlName="fromLocation">
+            <input class="input-bar form__group" type="text" placeholder="From" id="fromPlace" formControlName="fromLocation" style="color: black;">
             <br>
             <br>
             <!-- <label for="toPlace">To</label> -->
-            <input class="input-bar" type="text" id="toPlace" placeholder="To" formControlName="toLocation">
+            <input class="input-bar" type="text" id="toPlace" placeholder="To" formControlName="toLocation" style="color: black;">
             <br>
             <br>
             <button class="btn btn-secondary" type="Submit">Search</button>

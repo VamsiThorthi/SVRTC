@@ -21,6 +21,11 @@ import { FromtoComponent } from './fromto/fromto.component';
 import { LabellingComponent } from './labelling/labelling.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { HomeComponent } from './home/home.component';
+import {MatDialogModule,MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { SignupComponent } from './signup/signup.component';
+import {MatSelectModule} from '@angular/material/select';
+import { IntermediatestationsComponent } from './intermediatestations/intermediatestations.component';
 
 
 
@@ -36,7 +41,9 @@ import { HomeComponent } from './home/home.component';
     FromtoComponent,
     LabellingComponent,
     LoginPageComponent,
-    HomeComponent
+    HomeComponent,
+    SignupComponent,
+    IntermediatestationsComponent
   ],
   imports: [
     BrowserModule,
@@ -48,10 +55,13 @@ import { HomeComponent } from './home/home.component';
     MatAutocompleteModule,
     MatSlideToggleModule,
     MatFormFieldModule,
+    MatInputModule,
     MatMenuModule,
-   
+    MatDialogModule,
+    MatFormFieldModule,
+    MatToolbarModule,MatSelectModule
   ],
-  providers: [],
+  providers: [ {provide : MAT_DIALOG_DEFAULT_OPTIONS,useValue:{hasBackdrop:false}}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

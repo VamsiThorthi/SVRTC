@@ -1,0 +1,35 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-container > * {
+    width: 30%;
+  }
+  .bg-container{
+    height: 100vh;
+    background-color: aqua;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .card-container{
+   background-color: rgb(240, 240, 215);
+   width: 25%;
+   border-radius: 8px;
+   
+  }
+  .card-container2{
+    display: flex;
+   flex-direction: column;
+  }
+  #myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+  }

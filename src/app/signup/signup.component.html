@@ -1,0 +1,52 @@
+<video autoplay muted loop id="myVideo">
+    <source
+        src="https://res.cloudinary.com/dfmmh4qka/video/upload/v1655878680/stock-footage-london-buses-go-past-st-paul-s-cathedral_rexvd2.mp4"
+        type="video/mp4">
+</video>
+
+<div class="bg-container">
+    <div class="card-container">
+        <form [formGroup]="signUp" (submit)="onSubmit()" class="example-container" class="card-body card-container2">
+            <mat-form-field>
+                <input matInput placeholder="first name" formControlName="firstName">
+                <mat-error *ngIf="firstName?.invalid">{{getFirstNameError()}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="last name" formControlName="lastName">
+                <mat-error *ngIf="lastName?.invalid">{{getLastNameError()}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-select placeholder="gender" formControlName="gender">
+                    <mat-option value="Male">Male</mat-option>
+                    <mat-option value="Female">Female</mat-option>
+                    <mat-option value="Others">Others</mat-option>
+                </mat-select>
+                <mat-error *ngIf="gender?.invalid">select gender</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Enter your email" formControlName="email" required>
+                <mat-error *ngIf="email?.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="user name" formControlName="userName">
+                <mat-error *ngIf="userName?.invalid">Enter user name</mat-error>
+            </mat-form-field>
+
+
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                <mat-error *ngIf="password?.invalid">{{getPasswordError()}}</mat-error>
+            </mat-form-field>
+
+            <button type="submit" [disabled]="signUp.invalid" mat-raised-button color="warn">submit</button>
+
+        </form>
+
+    </div>
+</div>

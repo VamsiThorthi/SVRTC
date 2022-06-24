@@ -1,4 +1,4 @@
-<mat-toolbar class="mat-elevation-z6">
+<mat-toolbar class="mat-elevation-z6"> 
     <span><img src="https://res.cloudinary.com/dfmmh4qka/image/upload/v1653642634/download_ogpnra.png" class="imgSize"> SVRTC</span>
     <div class="spacer"></div>
         <a mat-button routerLink="addBus" class="pad">Bus Details</a>
@@ -6,8 +6,8 @@
         <button mat-button [matMenuTriggerFor]="belowMenu">Login/SignUp</button>
         <mat-menu #belowMenu="matMenu" yPosition="below">
         <button mat-menu-item  routerLink="login">Login</button>
-        <button mat-menu-item>SignUp</button>
+        <button mat-menu-item routerLink="signUp">SignUp</button>
         </mat-menu>
-        <a mat-raised-button color="accent" routerLink="fromTo" class="pad">From to</a>
+        <!-- <a mat-raised-button color="accent" routerLink="fromTo" class="pad">From to</a> -->
         <a mat-button routerLink="busStation">Bus Station</a>
 </mat-toolbar>
