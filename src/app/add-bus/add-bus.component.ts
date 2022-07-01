@@ -1,8 +1,9 @@
-import { getLocaleDateTimeFormat } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BusService } from '../bus.service';
+
 
 @Component({
   selector: 'app-add-bus',
@@ -11,45 +12,54 @@ import { BusService } from '../bus.service';
 })
 export class AddBusComponent implements OnInit {
   errorMsg: any;
-  data=false;
+  data = false;
 
-  constructor(private busService:BusService,
-    private router:Router) { }
+  constructor(private busService: BusService,
+    private router: Router) {
 
+
+  }
   ngOnInit(): void {
   }
 
-  busForm=new FormGroup({
-    busNo:new FormControl('',[Validators.required]),
-    busType:new FormControl('',[Validators.required]),
-    seatType:new FormControl('',[Validators.required]),
-    arrivalDateTime:new FormControl('',[Validators.required]),
-    departureDateTime:new FormControl('',[Validators.required])
+  busForm = new FormGroup({
+    busNo: new FormControl('', [Validators.required]),
+    busType: new FormControl('', [Validators.required]),
+    seatType: new FormControl('', [Validators.required]),
+    arrivalDateTime: new FormControl('', [Validators.required]),
+    departureDateTime: new FormControl('', [Validators.required])
   }
   )
 
-  onSubmit(){
+  onSubmit() {
     console.warn(this.busForm.value);
     this.busService.createBusDetails(this.busForm.value).subscribe(
-      data => this.data = true,
-      err  => (this.errorMsg = <any>err.error,
-              this.data=false)
-  );
+      data => {
+        this.data = true; 
+        this.router.navigate(['/busStation'])
+      },
+      err => (this.errorMsg = <any>err.error,
+        this.data = false)
+    );
   }
-  get busNo(){
+  get busNo() {
     return this.busForm.get('busNo');
   }
-  get busType(){
+  get busType() {
     return this.busForm.get('busType');
   }
-  get seatType(){
+  get seatType() {
     return this.busForm.get('seatType');
   }
-  get busArrival(){
+  get busArrival() {
     return this.busForm.get('busArrival');
   }
-  get busDeparture(){
+  get busDeparture() {
     return this.busForm.get('busDeparture');
   }
 
+
 }
+
+
+

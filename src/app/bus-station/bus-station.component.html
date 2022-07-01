@@ -1,53 +1,54 @@
-<div>
-  <form class="form-control busStages" [formGroup]="busStageForm" (ngSubmit)="addBusStages()">
+<app-dept-home></app-dept-home>
+<div style=" background-image: linear-gradient(rgb(245, 118, 118),rgb(248, 225, 225)); 
+height: 100vh;
+background-size: cover;">
+  <form style="background-color:rgb(250, 102, 102);" class="form-control busStages" [formGroup]="busStageForm"
+    (ngSubmit)="addBusStages()">
     <div>
-      <label for="busNo">Bus No</label>
-    <br>
-    <input type="text" id="busNo" name="busNo" formControlName="busNo">
-    </div>
-    <div>
-      <label for="stages">Total Stages</label>
-    <br>
-    <input type="number" id="stages" name="stages" formControlName="stages" min="1" max="10">
-    </div>
-    <button [disabled]="busStageForm.invalid" type="submit">submit</button>
-    
-  </form>
-  
-  <div class="error_container" *ngIf="successValue=='error'">
-    <p class="error_para" style="color: red; font-size:24px;">{{errorValue}}</p>
-  </div>
-  <div *ngIf="successValue=='success'">
-    <form  class="form-control form_row"  [formGroup]="addStationFrom"  (ngSubmit)="setStations(i)" *ngFor="let each of busArray let i=index">
-
-  <div>
-    <label for="stationName">Station Name</label>
-    <br>
-    <select formControlName="stationName" id="stationName"  (change)="findStationDistrict($event,i)">
-      <option value="Choose station name" selected>Choose Station Name</option>
-      <option *ngFor="let station of stationNames" value="{{station.stationName}}">{{station.stationName}}</option>
-    </select>
-    <br>
-    <br>
-
-   
-  </div>
-  <div>
-    
+      <label for="busNo" style="color: black; font: weight 800;">Bus No</label>
       <br>
-      <select formControlName="stationDistrict" id="{{'stationDistrict' + each.stationId}}">
-        <option value="Choose District" selected>Choose District</option>
-        <option *ngFor="let station of listOfLists[i] ">{{station}}</option>
-        
-        
-          
-        
-        
-      </select>
+      <input type="text" id="busNo" name="busNo" formControlName="busNo">
+    </div>
+    <div>
+      <label for="stages" style="color: black; font: weight 800;">Total Stages</label>
+      <br>
+      <input type="number" id="stages" name="stages" formControlName="stages" min="1" max="10">
+    </div>
+    <div>
+      <button [disabled]="busStageForm.invalid || buttondisabled" type="submit"
+        style="cursor: pointer; color: black; border-radius: 25px; height: 40px; width: 80px; background-color: rgb(120, 209, 120);">submit</button>
+      
+    </div>
+  </form>
 
+  <div class="error_container" *ngIf="successValue=='error'">
+    <p class="error_para" style="color: black; font-size:24px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">{{errorValue}}</p>
   </div>
-  <!-- <div> -->
-  <!-- <label for="arrivalDateTime">Arrival DateTime</label>
+  <div style="background-color:rgb(241, 197, 197);" *ngIf="successValue=='success'">
+    <form style="background-color:rgb(241, 197, 197);" class="form-control form_row" [formGroup]="addStationFrom"
+      (ngSubmit)="setStations(i)" *ngFor="let each of busArray let i=index">
+
+      <div>
+        <label for="stationName">Station Name</label>
+        <br>
+        <select formControlName="stationName" id="stationName" (change)="findStationDistrict($event,i)">
+          <option value="Choose station name" selected>Choose Station Name</option>
+          <option *ngFor="let station of stationNames" value="{{station.stationName}}">{{station.stationName}}</option>
+        </select>
+        <br>
+        <br>
+      </div>
+      <div><label for="stationName">District Name</label>
+        <br>
+        <select formControlName="stationDistrict" id="{{'stationDistrict' + each.stationId}}">
+          <option value="Choose District" selected>Choose District</option>
+          <option *ngFor="let station of listOfLists[i] ">{{station}}</option>
+
+        </select>
+
+      </div>
+      <!-- <div> -->
+      <!-- <label for="arrivalDateTime">Arrival DateTime</label>
     <br>
     <input type="datetime-local" id="arrivalDateTime" name="arrivalDateTime" formControlName="arrivalDateTime">
   </div>
@@ -56,17 +57,23 @@
     <br>
     <input type="datetime-local" id="departureDateTime" name="departureDateTime" formControlName="departureDateTime">
   </div> -->
-  <div>
-  
-  </div>
-  <button type="submit" >
-    submit
-   </button>
- 
+      <div>
 
-  </form>
-  <button type="submit" (click)="saveBusstations()" >
-    submit123
-   </button>
-</div>
+      </div>
+      <button type="submit"
+        style="cursor: pointer; color: black; border-radius: 25px; height: 40px; width: 80px; background-color: rgb(245, 118, 118)">
+        Add
+      </button>
+      <button (click)="onback()" style="background-color: rgb(82, 146, 82);" class="btn btn-secondary">back</button>
+
+
+    </form>
+    <div style="text-align: center;">
+      <button type="submit"
+        style="margin-top: 20px; margin-bottom: 20px; cursor: pointer; color: black; border-radius: 25px; height: 40px; width: 80px; background-color: rgb(236, 47, 47)"
+        (click)="saveBusstations()">
+        Save All
+      </button>
+    </div>
+  </div>
 </div>

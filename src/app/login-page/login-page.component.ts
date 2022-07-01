@@ -32,7 +32,7 @@ export class LoginPageComponent implements OnInit {
     this.signupService.getByNameAndPassword(this.userNameInput?.value, this.passwordInput?.value).subscribe(
       (data) => {
         console.log(data);
-        this.router.navigateByUrl('/bus-label');
+        this.router.navigateByUrl('/dept-home');
       }, (error) => {
         console.log(error)
       }

@@ -103,6 +103,8 @@ export class SignupComponent implements OnInit {
           console.log(error);
         }
       );
+      this.router.navigate(['/dept-home']);
   }
+  
 
 }

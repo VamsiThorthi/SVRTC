@@ -7,8 +7,9 @@
     width: 30%;
   }
   .bg-container{
+    background-image: linear-gradient(rgb(245, 118, 118),rgb(248, 225, 225)); 
     height: 100vh;
-    background-color: aqua;
+    background-size: cover;
     background-size: cover;
     display: flex;
     flex-direction: column;

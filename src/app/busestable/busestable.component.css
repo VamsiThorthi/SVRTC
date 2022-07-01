@@ -1,0 +1,21 @@
+table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 10%;
+  }
+  .bg-container{
+    background-image: linear-gradient(rgb(245, 118, 118),rgb(228, 158, 158)); 
+    height: 100vh;
+    background-size: cover;  }
+
+  .table-container{
+
+    color: rgb(39, 38, 38);
+  }

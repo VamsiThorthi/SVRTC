@@ -1,18 +1,22 @@
 <app-navbar></app-navbar>
 <div class=" d-flex flex-column align-items-end bg-container">
-    <div class="form-container">
+  <div class="form-container">
 
-        <form [formGroup]="fromToForm" (submit)="searchbuses()">
-            <!-- <label for="fromPlace" class="form__label">From</label> -->
-            <input class="input-bar form__group" type="text" placeholder="From" id="fromPlace" formControlName="fromLocation" style="color: black;">
-            <br>
-            <br>
-            <!-- <label for="toPlace">To</label> -->
-            <input class="input-bar" type="text" id="toPlace" placeholder="To" formControlName="toLocation" style="color: black;">
-            <br>
-            <br>
-            <button class="btn btn-secondary" type="Submit">Search</button>
-        </form>
-    </div>
+    <form [formGroup]="fromToForm" (submit)="searchbuses()">
+      <input class="input-bar form__group"  type="text" placeholder="From" id="fromPlace" formControlName="fromLocation"
+        style="color: black;">
+      <br>
+      <br>
+      <input class="input-bar" type="text" id="toPlace" placeholder="To" formControlName="toLocation"
+        style="color: black;">
+      <br>
+      <br>
+      <input class="input-bar" type="date" id="arrivalDateTime" placeholder="date of journey" formControlName="arrivalDateTime"
+        style="color: black;">
+      <br>
+      <br>
 
+      <button [disabled]="fromToForm.invalid" class="btn btn-secondary" type="Submit">Search</button>
+    </form>
+  </div>
 </div>

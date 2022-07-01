@@ -17,13 +17,15 @@ export class BusStationComponent implements OnInit {
   successValue:String='';
   busArray=<any>[];
   listOfLists=<any>[];
- 
+  buttondisabled=false;
   busStationArray=<any>[];
   stationDistricts!:any;
   stationList: Array<Station> = [];
   stationNames: any;
+  editdisabled=true;
+  
 
-  constructor(private busService:BusService,private stationService:StationService) { }
+  constructor(private busService:BusService,private stationService:StationService,private router:Router) { }
 
   ngOnInit(): void {  
     this.stationService.getStationDetails().subscribe((data)=>{
@@ -45,9 +47,13 @@ export class BusStationComponent implements OnInit {
       (data:any)=>{
         console.log(data);
         this.successValue="success";
+        
         for (let index = 0; index < this.stages?.value; index++) {
           this.busArray.push(index);
         }
+        this.busStageForm.disable();
+        this.buttondisabled=true;
+        this.editdisabled=false;
       },
       e => {
         console.log(e)
@@ -58,6 +64,8 @@ export class BusStationComponent implements OnInit {
     )
     
   }
+
+ 
 
   findStationDistrict(event:any,index:number){
     console.log(event.target.value)
@@ -80,9 +88,6 @@ export class BusStationComponent implements OnInit {
   })
 
   setStations(i:number){
-
-  
-
     this.busStationArray[i]=this.addStationFrom.value;
     console.log(this.busStationArray)
   }
@@ -91,6 +96,8 @@ export class BusStationComponent implements OnInit {
     this.busService.setStationToBus(this.addStationFrom.value,this.busNo?.value).subscribe(
       (data:any)=>{
         console.log(data);
+
+       
       },
       e => {
         console.log(e.error)
@@ -105,28 +112,24 @@ export class BusStationComponent implements OnInit {
 
 
   saveBusstations(){
+    console.log(this.busStationArray,"abcd")
     this.busStationArray.forEach((element:any) => {
-      this.stationService.getStationByNameAndDistrict(element.stationName,element.stationDistrict).subscribe((data)=>{
-        
-        this.busService.setStationToBus(data,this.busNo?.value).subscribe((data1)=>{
-          console.log(data1,"setting")
-        },(error)=>{
-          console.log(error)
+      this.stationService.getStationByNameAndDistrict(element.stationName,element.stationDistrict).subscribe(
+        {
+          next :(data:any)=>{
+            console.log(data,"getStationByNameAndDistrict");
+            console.log(this.busNo?.value);
+            this.busService.setStationToBus(data,this.busNo?.value).subscribe
+            ((data)=>{
+              console.log(data)
+            });
+            
+          } 
         }
-        )
-
-
-
-      },(error)=>{
-        console.log("arrrrrr")
-        console.log(error)
-      })
+      )
     });
-
-
-
-
-    console.log(this.busStationArray)
+    this.router.navigate(['/busTable'])
+    
   }
 
   get busNo(){

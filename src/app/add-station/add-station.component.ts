@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 
 import { Router } from '@angular/router';
+import { Dialog } from 'smart-webcomponents-angular';
+import { CreatedSuccessfullyComponent } from '../created-successfully/created-successfully.component';
 import { StationService } from '../station.service';
 
 @Component({
@@ -16,7 +19,7 @@ export class AddStationComponent implements OnInit {
   errorMsg: any;
 
   constructor(private stationService: StationService,
-    private router:Router) { }
+    private router:Router,private dialog:MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -31,7 +34,7 @@ export class AddStationComponent implements OnInit {
   onSubmit(){
     console.warn(this.stationForm.value);
     this.stationService.createStationDetails(this.stationForm.value).subscribe(
-      data => this.data = true,
+      data => {this.data = true, window.location.reload();},
       err  => (this.errorMsg = <any>err.error,
               this.data=false))
   }
@@ -44,5 +47,8 @@ export class AddStationComponent implements OnInit {
   get Buses(){
     return this.stationForm.get('Buses');
   }
-
+  openDialog() {
+    alert("added successfully")
+    window.location.reload();
+  }
 }

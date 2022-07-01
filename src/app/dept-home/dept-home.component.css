@@ -1,0 +1,29 @@
+.bg-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-size: cover;
+    background-image: url("https://res.cloudinary.com/dfmmh4qka/image/upload/v1653997456/generic_banner_Ind_bhu5zc.png");
+
+}
+.spacer{
+    flex: 1 1 auto;
+}
+.imgSize{
+    height: 50px;
+    width: 80px;
+    margin: 10px;
+}
+.pad{
+    margin-right: 1rem;
+}
+.image-cont{
+    height: 100vh;
+}
+.imgSize{
+    height: 50px;
+    width: 80px;
+    margin: 10px;
+}

@@ -1,0 +1,11 @@
+.card-cont{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.table-cont{
+    height: 90vh;
+    margin-right: 20px;
+    width: 50vw;
+}

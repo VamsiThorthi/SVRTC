@@ -36,23 +36,30 @@ export class LabellingComponent implements OnInit {
   ]
 
   constructor(private busService: BusService, private router: Router, private activatedRoute: ActivatedRoute) {
-    this.getResultList()
+    
+    this.output=this.busService.ResultList;
+    console.log(this.busService.ResultList,"resultList")
   }
 
   ngOnInit(): void {
+    console.log(this.output,"ppp")
   }
+  
 
   onBack() {
-    this.router.navigate(['/fromTo'])
+    this.router.navigate(['/'])
+  }
+  goToHome(){
+    this.router.navigate(['/'])
   }
 
-  getResultList() {
-    console.log(this.busService.ResultList)
-    this.output = this.busService.ResultList
-  }
+  // getResultList() {
+  //   //console.log(this.busService.ResultList)
+  //   this.output = this.busService.ResultList
+  // }
 
   intermediateSations(busStations: any) {
-    console.log(busStations)
+   // console.log(busStations)
     this.busService.ResultList = busStations
     // this.router.navigateByUrl('/next')
     this.router.navigate(['/next', { busStations: JSON.stringify(busStations) }], { relativeTo: this.activatedRoute })

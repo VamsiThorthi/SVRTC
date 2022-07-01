@@ -1,11 +1,15 @@
 .busStages {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    height: 15vh;
 }
 
 .form_row {
     display: flex;
     justify-content: space-evenly;
+    height: 15vh;
+    align-items: center;
 }
 .error_container{
     display: flex;

@@ -1,0 +1,42 @@
+<div>
+  <form [formGroup]="stationForm" (ngSubmit)="collection()">
+    <label for="stationName">station Name</label>
+    <br>
+    <input type="text" name="stationName" id="stationName" formControlName="stationName">
+    <br>
+    <span style="color: red; font-size:10px;"
+      *ngIf="stationName && stationName.invalid && stationName.touched">station name already registered</span><br>
+    <br>
+    <label for="stationDistrict">station District</label>
+    <br>
+    <!-- <input type="text" name="stationDistrict" id="stationDistrict" formControlName="stationDistrict">  -->
+    <select  formControlName="stationDistrict">
+      <option value="Choose District" selected>Choose District</option>
+      <option *ngFor="let district of districts">{{district}}</option>
+    </select>
+    <br>
+    <span style="color: red; font-size:10px;"
+      *ngIf="stationDistrict && stationDistrict.invalid && stationDistrict.touched">please select district
+      name</span><br>
+    <br>
+    <br>
+    <label for="addStation">serial number</label>
+    <br>
+    <input type="text" name="addStation" id="addStation" formControlName="addStation" placeholder="where you want to add">
+    <br>
+    <span style="color: red; font-size:10px;"
+      *ngIf="addStation && addStation.invalid && addStation.touched">serial number required</span><br>
+    <br>
+<div style="text-align: center;">
+<button  type="submit" style="background-color: rgb(82, 146, 82);" class="btn btn-secondary" (click)="openDialog()">Add Station</button>
+<button (click)="onback()" style="background-color: rgb(82, 146, 82);" class="btn btn-secondary">back</button>
+
+</div>        <br>
+    <br>
+ 
+    <ng-template #elseBlockShow>
+      <p style="color: red; font-size:12px;">{{errorMsg}}</p>
+
+    </ng-template>
+  </form>
+</div>

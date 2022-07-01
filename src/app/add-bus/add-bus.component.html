@@ -1,12 +1,12 @@
+<app-dept-home></app-dept-home>
 <div class="bus-container" >
   <div class="form-container">
     <form [formGroup]="busForm" (ngSubmit)="onSubmit()">
-
       <br>
       <br>
       <label for="busNo">Bus No</label>
       <br>
-      <input type="text" placeholder="bus vechile no" id="busNo" formControlName="busNo">
+      <input style="border-width: 0px; border-style: none; border-color: transparent; border" type="text" placeholder="bus vechile no" id="busNo" formControlName="busNo">
       <br>
       <span style="color: red; font-size:10px;" *ngIf="busNo && busNo.invalid && busNo.touched">please eneter valid bus no</span>
       <br>
@@ -46,8 +46,6 @@
       </div>
       <ng-template #elseBlockShow>
         <p style="color: red; font-size:12px;">{{errorMsg}}</p>
-        <p>Vamsi</p>
-        
       </ng-template>
     </form>
 

@@ -1,0 +1,34 @@
+
+    <mat-toolbar class="mat-elevation-z6">
+        <span><img src="https://res.cloudinary.com/dfmmh4qka/image/upload/v1653642634/download_ogpnra.png" class="imgSize" (click)="onClick()"></span>
+        <div class="spacer"></div>
+        <button  mat-button [matMenuTriggerFor]="belowMenu">Bus</button>
+        <mat-menu  #belowMenu="matMenu" yPosition="below">
+            <button mat-menu-item routerLink="/addBus" class="pad">Register a bus</button>
+            <button  mat-menu-item routerLink="/busTable" class="pad">Available buses list</button>
+            <button  mat-menu-item routerLink="/busStation" class="pad">Add stations to bus</button>
+        </mat-menu>
+        <button  mat-button [matMenuTriggerFor]="belowMenu2">Station</button>
+        <mat-menu  #belowMenu2="matMenu" yPosition="below">
+            <button  mat-menu-item routerLink="/addStation">Register a station</button>
+        </mat-menu>
+        <button  mat-button routerLink="/signUp">New Admin</button>
+        <button  mat-button (click)="onLogout()">Logout</button>
+    </mat-toolbar>
+   
+
+
+
+
+<!-- <div *ngIf="addStationClicked==true">
+    <app-add-station></app-add-station>
+</div>
+<div *ngIf="stationListClicked==true">
+    <app-table-overview-example></app-table-overview-example>
+</div>
+<div *ngIf="addBusClicked==true">
+    <app-add-bus></app-add-bus>
+</div>
+<div *ngIf="busesListClicked==true">
+    <app-busestable></app-busestable>
+</div> -->
